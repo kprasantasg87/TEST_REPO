@@ -14,7 +14,7 @@
     - name: git installation 
       yum:
         name: git
-        state: absent 
+        state: present 
 
     - name: file creation 
       file:
@@ -35,3 +35,9 @@
       user:
         name: prasanta
         state: present
+
+    - name: git clone
+      git:
+        repo: https://github.com/kprasantasg87/TEST_REPO.git
+        dest: /tmp/prasanta
+        clone: yes
