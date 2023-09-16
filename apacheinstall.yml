@@ -1,0 +1,37 @@
+---
+- hosts: server
+  tasks:
+    - name: apache installation
+      yum:
+        name: httpd
+        state: present
+
+    - name: Bring apache server up 
+      service:
+        name: httpd
+        state: stopped
+
+    - name: git installation 
+      yum:
+        name: git
+        state: absent 
+
+    - name: file creation 
+      file:
+        name: /tmp/prasanta.txt
+        state: touch
+
+    - name: directory creation
+      file:
+        name: /tmp/prasanta
+        state: directory
+
+    - name: copy the content 
+      copy:
+        src: /tmp/b.txt
+        dest: /tmp/prasanta.txt
+
+    - name: user creation
+      user:
+        name: prasanta
+        state: present
